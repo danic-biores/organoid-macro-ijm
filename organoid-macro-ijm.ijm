@@ -1,10 +1,13 @@
 // organoid-macro-ijm
 // ImageJ/Fiji macro for semi-automated batch analysis of organoid growth
+// Authors: Daniela Conticelli (ORCID: 0000-0003-4661-9776) & Marika Milan (ORCID: 0000-0003-2535-0640)
+// Version: 1.0.0
+// License: MIT
 
 inputFolder = getDirectory("Select Input folder");
 outputFolder = getDirectory("Select Output folder");
 
-// Creazione sottocartelle di output
+// Create output subfolders
 resultsFolder = outputFolder + "RESULTS" + File.separator;
 jpegFolder = outputFolder + "JPEG" + File.separator;
 roiFolder = outputFolder + "ROI" + File.separator;
@@ -28,7 +31,7 @@ for (i = 0; i < fileList.length; i++) {
     run("Unsharp Mask...", "radius=10 mask=0.60");
     run("Gaussian Blur...", "sigma=1");
     
-    // Fase interattiva per la soglia (Threshold)
+    // Set Threshold
     setAutoThreshold("Default dark");
     run("Threshold...");
     waitForUser("Adjust threshold to be as representative as possible of the original image, then press OK.");
@@ -37,22 +40,22 @@ for (i = 0; i < fileList.length; i++) {
     run("Convert to Mask");
     run("Open"); 
     
-    // Configurazione misure (Area e Area Fraction per ottenere Count, Total Area, Average Size, %Area)
+    // Measure configurations (Area e Area Fraction per ottenere Count, Total Area, Average Size, %Area)
     run("Set Measurements...", "area area_fraction limit display redirect=["+imageName+"] decimal=2"); 
     run("Analyze Particles...", "size=200-Infinity display summarize add composite");
     
-    // Salva Risultati Singoli
+    // Save Results
     selectWindow("Results");
     saveAs("Results", resultsFolder + imageName + ".csv");
     close("Results");
     
-    // Salva Anteprima JPEG
+    // Save JPEG
     selectWindow(imageName);
     run("Flatten");
     saveAs("jpeg", jpegFolder + imageName + ".jpg");
     close(); 
     
-    // Salva ROI e pulizia
+    // Save ROI and clean
     if (roiManager("count") > 0) {
         roiManager("Save", roiFolder + imageName + ".zip");
         roiManager("Delete");
@@ -61,7 +64,7 @@ for (i = 0; i < fileList.length; i++) {
     close(imageName); 
 }
 
-// Salva il sommario finale (con Count, Total Area, Average Size, %Area)
+// Save final summary table (containing Count, Total Area, Average Size, %Area)
 if (isOpen("Summary")) {
     selectWindow("Summary");
     saveAs("Results", resultsFolder + "Summary_Total.csv");
