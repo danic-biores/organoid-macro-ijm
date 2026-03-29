@@ -26,8 +26,8 @@ The macro focuses on key growth metrics for each image:
 5. For each image, adjust the threshold levels in the pop-up window to ensure it is as representative as possible of the original image (accurately capturing the organoid boundaries), then click **OK** to proceed.
 
 ## Developed by
-* **Daniela Conticelli**
-* **Marika Milan**
+* **Daniela Conticelli** [![ORCID](https://img.shields.io/badge/ORCID-0000--0003--4661--9776-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0000-0003-4661-9776)
+* **Marika Milan** [![ORCID](https://img.shields.io/badge/ORCID-0000--0003--2535--0640-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0000-0003-2535-0640)
   
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
