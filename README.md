@@ -1,5 +1,5 @@
 # organoid-macro-ijm
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19311956.svg)](https://doi.org/10.5281/zenodo.19311956)
 An ImageJ/Fiji macro for semi-automated batch analysis of organoid growth and morphology.
 
 ## Description
@@ -25,5 +25,9 @@ The macro focuses on key growth metrics for each image:
 4. Select the **Input folder** (containing your raw images) and the **Output folder** when prompted.
 5. For each image, adjust the threshold levels in the pop-up window to ensure it is as representative as possible of the original image (accurately capturing the organoid boundaries), then click **OK** to proceed.
 
+## Developed by
+* **Daniela Conticelli**
+* **Marika Milan**
+  
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
